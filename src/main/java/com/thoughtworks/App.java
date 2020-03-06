@@ -92,7 +92,7 @@ public class App {
 
     public static Transaction getMinTransaction(List<Transaction> transactions) {
         return transactions.stream()
-            .sorted(Comparator.comparingInt(Transaction::getValue))
-            .limit(1).collect(Collectors.toList()).get(0);
+            .min(Comparator.comparingInt(Transaction::getValue))
+            .orElseThrow(NoClassDefFoundError::new);
     }
 }
